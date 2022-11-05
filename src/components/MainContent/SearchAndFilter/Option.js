@@ -4,11 +4,16 @@ import { useNavigate } from "react-router-dom";
 
 function Option(props) {
   const { region } = props;
-  const navigate = useNavigate();
+  //console.log(props);
+
+  const navigate = useNavigate(); //đẩy gía trị lên thanh host
 
   const handleValueOption = () => {
+    //log(region.value) nhận đc : Africa. asia
     if (region.value !== "All") navigate(`/region/${region.value}`);
     else navigate(`/`);
+    //nếu giá trị value mà khác All thì ... push navigate (/region/...)
+    //ngược lại thì đưa về trang chủ
   };
 
   return (

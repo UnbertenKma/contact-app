@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useRef } from "react";
+
 import {
   FaGlobeAfrica,
   FaGlobeAmericas,
   FaGlobeAsia,
   FaGlobeEurope,
 } from "react-icons/fa";
+
 import { GiEarthAsiaOceania, GiWorld } from "react-icons/gi";
 import styled from "styled-components";
-import Option from "./Option";
-
 import { ThemeContext } from "../../ThemeContext/themeContext";
+
+import Option from "./Option";
 
 const RegionList = [
   { icon: GiWorld, value: "All" },
@@ -26,7 +28,9 @@ function Options({ isShowOptions }) {
 
   useEffect(() => {
     const ShowOptions = () => {
+      //nếu ShowOptions là true
       if (isShowOptions) {
+        //hiển thị các ref : show ra
         refOptions.current.style.maxHeight = `${refOptions.current.scrollHeight}px`;
         refOptions.current.style.transform = `scaleY(1)`;
       } else {
@@ -35,10 +39,13 @@ function Options({ isShowOptions }) {
       }
     };
     ShowOptions();
+
+    //lắng nghe và dọn dẹp
     document.addEventListener("resize", ShowOptions);
     return () => {
       document.removeEventListener("resize", ShowOptions);
     };
+    //
   }, [isShowOptions]);
 
   return (
@@ -60,20 +67,3 @@ const OptionsPane = styled.ul`
   overflow: hidden;
   z-index: 10;
 `;
-
-// const OptionItem = styled.li`
-//   display: flex;
-//   align-items: center;
-//   font-size: 18px;
-//   font-weight: 500;
-//   cursor: poiter;
-//   padding: 4px 8px;
-//   &:hover {
-//     font-weight: bold;
-//     background: var(--SelectOptionBackground);
-//   }
-
-//   span {
-//     margin-left: 6px;
-//   }
-// `;

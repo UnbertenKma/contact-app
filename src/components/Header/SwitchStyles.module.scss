@@ -25,6 +25,7 @@
     transition: all 0.2s ease;
 }
 
+//Khi mà ấn vào input > checker thì cirle và icon đổi chỗ cho nhau
 .Input:checked ~ .Circle {
     transform: translateX(-28px);
     -webkit-transform: translateX(-28px);
@@ -36,9 +37,9 @@
     -webkit-transform: translateX(28px);
     -ms-transform: translateX(28px);
 }
-
 .Input {
     height: 0;
     width: 0;
     opacity: 0;
 }
+//

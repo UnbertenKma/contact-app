@@ -2,34 +2,36 @@ import React from "react";
 import styled from "styled-components";
 import { ThemeContext } from "../../ThemeContext/themeContext";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
-function Country() {
+function Country(props) {
+  const { country } = props;
+
   const themeContext = useContext(ThemeContext);
   return (
-    <CountryCard className={themeContext.theme}>
-      <div className="flag">
-        <img
-          src="http://images5.fanpop.com/image/photos/25700000/vietnamese-flag-vietnamese-places_mina_kimngan-25790392-1024-768.jpg"
-          alt=""
-        />
-      </div>
+    <Link to={`/country/${country.name}`}>
+      <CountryCard className={themeContext.theme}>
+        <div className="flag">
+          <img src={country.flag} alt="" />
+        </div>
 
-      <CountryInfo>
-        <h3>Afghannistan</h3>
-        <div>
-          Population:
-          <span>123.456.789</span>
-        </div>
-        <div>
-          Region:
-          <span>Asia</span>
-        </div>
-        <div>
-          Capital:
-          <span>Kabul</span>
-        </div>
-      </CountryInfo>
-    </CountryCard>
+        <CountryInfo>
+          <h3>{country.name}</h3>
+          <div>
+            Population:
+            <span>{country.population}</span>
+          </div>
+          <div>
+            Region:
+            <span>{country.region}</span>
+          </div>
+          <div>
+            Capital:
+            <span>{country.capital}</span>
+          </div>
+        </CountryInfo>
+      </CountryCard>
+    </Link>
   );
 }
 
@@ -72,7 +74,6 @@ const CountryInfo = styled.div`
     font-weight: bold;
     height: 50px;
   }
-
   div {
     display: block;
     font-size: 16px;
@@ -80,6 +81,7 @@ const CountryInfo = styled.div`
     margin: 4px 0;
     span {
       font-weight: 400;
+      margin-left: 4px;
     }
   }
 `;

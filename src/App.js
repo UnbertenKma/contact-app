@@ -3,29 +3,28 @@ import styled from "styled-components";
 import "./App.css";
 import Header from "./components/Header";
 import MainContent from "./components/MainContent";
-import { ThemeContext} from './components/ThemeContext/themeContext'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { ThemeContext } from "./components/ThemeContext/themeContext";
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CountryDetail from "./components/MainContent/CountryDetail";
+import Footer from "./components/Footer";
 
 function App() {
-  const themeContext = useContext(ThemeContext)
-
+  const themeContext = useContext(ThemeContext);
   return (
     <AppContainer className={themeContext.theme}>
       <Router>
         <Header />
         <ContentContainer>
           <Routes>
-            <Route exact path='/' element={<MainContent />} />
-            <Route path='/region/:regionName' element={<MainContent />} />
+            <Route exact path="/" element={<MainContent />} />
+            <Route path="/region/:regionName" element={<MainContent />} />
+            <Route path="/country/:countryName" element={<CountryDetail />} />
+            <Route path="/search/:name" element={<MainContent />} />
           </Routes>
         </ContentContainer>
+        <Footer />
       </Router>
-      
     </AppContainer>
   );
 }
